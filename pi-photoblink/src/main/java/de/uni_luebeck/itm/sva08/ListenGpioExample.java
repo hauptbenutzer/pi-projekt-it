@@ -29,7 +29,7 @@ package de.uni_luebeck.itm.sva08;
  */
 
 import com.pi4j.io.gpio.*;
-import com.pi4j.io.gpio.event.*;
+import com.pi4j.io.gpio.trigger.GpioSyncStateTrigger;
 
 /**
  * This example code demonstrates how to setup a listener
@@ -49,18 +49,8 @@ public class ListenGpioExample {
         final GpioPinDigitalInput sensor = gpio.provisionDigitalInputPin(RaspiPin.GPIO_03);
         final GpioPinDigitalOutput led = gpio.provisionDigitalOutputPin(RaspiPin.GPIO_04);
 
-        // create and register gpio pin listener
-        sensor.addListener(new GpioPinListenerDigital() {
+        sensor.addTrigger(new GpioSyncStateTrigger(led));
 
-            public void handleGpioPinDigitalStateChangeEvent(GpioPinDigitalStateChangeEvent event) {
-                // display pin state on console
-                System.out.println(" --> GPIO PIN STATE CHANGE: " + event.getPin() + " = " + event.getState());
-                led.setState(event.getState());
-            }
-
-        });
-
-        System.out.println(" ... complete the GPIO #02 circuit and see the listener feedback here in the console.");
 
         // keep program running until user aborts (CTRL-C)
         for (;;) {

@@ -36,13 +36,14 @@ die richtige Java version (1.8) ausgewählt werden.
 Die LED hat eine Betriebsspannung von 2 bis 2,5 Volt und benötigt 25mA Stromstärke.
 Der Raspberry gibt für eine logische 0 0V aus und für eine logische 1 3,3V.
 Über den Widerstand muss eine Spannung von Urv anliegen.
-    Urv=Uges - Ud = 3,3 - 2.0 ... 2,5 = 0,8 ... 1,3
+
+    Urv=Uges - Ud = 3,3V - (2.0 ... 2,5)V = (0,8 ... 1,3)V
 
 Hieraus ergibt sich der nötige Widerstand Rv wie folgt:
 
-    Rv=Urv/Irv = 0,8V...1,3V/25mA=32...52 Ohm 
+    Rv=Urv/Irv = (0,8...1,3)V/25mA=(32...52) Ohm 
 
-Der nächstmögliche vorhandene Widerstand hat 100 Ohm und wird eignesetzt.
+Der nächstmögliche vorhandene Widerstand hat 100 Ohm und wird eingesetzt.
 
 #### Photosensor
 

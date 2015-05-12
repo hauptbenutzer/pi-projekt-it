@@ -7,9 +7,25 @@
 
 ## Abhängigkeiten installieren
 
-* wiringpi
-* pi4j
-* mvn
+Zum ausführen des Projekts müssen folgende Abhängigkeiten auf dem Raspberry installiert werden:
+
+### wiringpi
+
+[WiringPi](http://wiringpi.com) wird mit `git clone git://git.drogon.net/wiringPi` heruntergeladen
+und mit `./build` im heruntergeladenen Vezeichnis global installiert.
+
+### pi4j
+
+[Pi4j](http://pi4j.com) wird auf dem Raspberry mit `curl -s get.pi4j.com | sudo bash` installiert.
+Für die Entwicklung ist es zusätzlich auch im maven build process integriert und wird mit `mvn compile` heruntergeladen.
+
+### Maven
+
+Maven steht als alternative zum kompilieren und ausführen zur Verfügung.
+Maven wird über `apt-get install mvn` installiert.
+Hierbei kann unter umständen eine veraltete Java-version mitinstalliert werden.
+Damit dies später keine Probleme bereitet muss zusätzlich per `sudo update-alternatives --config java`
+die richtige Java version (1.8) ausgewählt werden.
 
 ## Programm ausführen
 

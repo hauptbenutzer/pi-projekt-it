@@ -2,12 +2,37 @@
 
 ## Raspberry aufsetzen
 
-* WLAN
-* hostname
+Um den Raspberry Pi aufzusetzen sind folgende Schritte nötig:
+* Filesystem entpacken
+* User-Password anpassen
+* Sprache auf `de_DE.UTF-8` setzen
+* Zeitzone auf Europe -> Berlin setzen
+* Keyboard-Layout auf `Deutsch` setzen
+* SSH aktivieren (im Bereich `Advanced`)
+
+### WLAN
+
+Für das WLAN muss die Datei `/etc/wpa_supplicant/wpa_supplicant.conf`angepasst werden:
+
+    ctrl_interface=DIR=/var/run/wpa_supplicant GROUP=netdev
+    update_config=1
+    network={
+    	ssid="UzL-Konferenz-WPA"
+    	key_mgmt=WPA-EAP
+    	eap=TTLS
+    	identity="USER"
+    	password="PASS"
+    	ca_cert="/etc/wpa_supplicant/telekom.crt"
+    	phase2="auth=MSCHAPV2"
+    }
+
+### hostname
+
+Der Hostname soll auf `pi-08`gesetzt werden.
 
 ## Abhängigkeiten installieren
 
-Zum ausführen des Projekts müssen folgende Abhängigkeiten auf dem Raspberry installiert werden:
+Zum Ausführen des Projekts müssen folgende Abhängigkeiten auf dem Raspberry installiert werden:
 
 ### wiringpi
 

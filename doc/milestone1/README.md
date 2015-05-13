@@ -159,9 +159,6 @@ Der nächstmögliche vorhandene Widerstand hat 100 Ohm und wird eingesetzt.
 
 Der Raspberry liest an einem Input ab 2V eine logische 1, unter 0,8V eine logische 0.
 
+## Raspberry anschließen 
 
-
-
-* Schaltplan
-* Kompilieren
-* Ausführen
+![Wiring](wiring.png)

@@ -16,3 +16,7 @@ Hierfür muss die ip Adresse der Bridge angegeben werden (wmgl. 10.0.1.102) gese
     end
 
 Anschließend kann wie auf Github beschrieben mit der Lampe kommuniziert werden.
+
+## Raspberry mit Bridge koppeln
+
+http://www.glennklockwood.com/sa/rpi-wifi-bridge.php

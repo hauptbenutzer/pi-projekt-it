@@ -26,6 +26,28 @@ Für das WLAN muss die Datei `/etc/wpa_supplicant/wpa_supplicant.conf`angepasst 
     	phase2="auth=MSCHAPV2"
     }
 
+### Ethernet
+
+Damit wlan und ethernet zusammen funktionieren muss zuerst `ifplugd` deinstalliert werden und in
+/etc/network/interfaces folgender Inhalt stehen:
+
+    auto lo
+    
+    iface lo inet loopback
+
+    allow-hotplug eth0
+    auto eth0
+    iface eth0 inet dhcp
+    post-up ip route replace default via 141.83.96.1
+
+    auto wlan0
+    allow-hotplug wlan0
+    iface wlan0 inet dhcp
+    wpa-conf /etc/wpa_supplicant/wpa_supplicant.conf
+    post-up ip route replace default via 141.83.96.1
+
+    iface default inet dhcp
+
 ### hostname
 
 Der Hostname soll auf `pi-08`gesetzt werden.
@@ -159,6 +181,6 @@ Der nächstmögliche vorhandene Widerstand hat 100 Ohm und wird eingesetzt.
 
 Der Raspberry liest an einem Input ab 2V eine logische 1, unter 0,8V eine logische 0.
 
-## Raspberry anschließen 
+## Raspberry anschließen
 
 ![Wiring](wiring.png)

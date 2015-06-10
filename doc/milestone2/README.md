@@ -12,11 +12,13 @@ mit der Bridge kommuniziert.
 Hierfür muss die ip Adresse der Bridge angegeben werden (wmgl. 10.0.1.102) gesetzt werden:
 
     Huey.configure do |d|
-      d.hue_ip = '10.0.1.102'
+      d.hue_ip = '10.0.1.103'
     end
 
-Anschließend kann wie auf Github beschrieben mit der Lampe kommuniziert werden.
+Anschließend kann wie auf Github und im folgenden beschrieben mit der Lampe kommuniziert werden.
 
-## Raspberry mit Bridge koppeln
+Zuerst den Knopf auf der Bridge drücken, dann:
 
-http://www.glennklockwood.com/sa/rpi-wifi-bridge.php
+    Huey::Request.register
+    bulb = Huey::Bulb.find(1)
+    bulb.rgb=...

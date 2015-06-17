@@ -1,11 +1,11 @@
-Webservice
-=========
+Raspberry Hue Webservice
+========================
 
 Auf dem Raspberry Pi wird für eine einfache Kommunikation zwischen Benutzer bzw.
 Client, Triplestore und der Philips Hue ein Webserver installiert. Dieser wird
 neben Endpunkten zum Abfragen und Setzen der Leuchteigenschaften der Philips
 Hue, auch Endpunkte für das Setzen und Abfragen von Benutzerpräferenzen zur
-Verfügung stellen. Durch ein stabiles Interface können Clients unabhängig von CoAP und
+Verfügung stellen (speziell dargestellte Farbe und Helligkeit). Durch ein stabiles Interface können Clients unabhängig von CoAP und
 der zugrunde liegenden Ontologie programmiert werden.
 
 # Endpunkte #

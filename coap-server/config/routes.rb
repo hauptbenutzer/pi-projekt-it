@@ -55,4 +55,5 @@ Rails.application.routes.draw do
   #   end
 
   get 'bulbs' => 'bulbs#index'
+  get 'hans' => 'bulbs#show'
 end

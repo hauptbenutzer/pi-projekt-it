@@ -15,7 +15,7 @@ Der Webserver reagiert auf folgende Operationen:
 * `GET` `/users/{{id}}`
   Liefert präferierten Helligkeits- und Farbwert des Users mit dem
   Identifikationsmerkmal `{{id}}` zurück.
-  (Entspricht `SELECT ?prefBright ?prefLightColor WHERE { ?x  hasId {{id}}}`)
+  (Entspricht `SELECT ?prefBright ?prefLightColor WHERE { ?x  sva:hasId {{id}}}. ?x sva:hasColor ?prefLightColor. ?x sva:hasBrightness ?prefBright`)
   (z.B. `{"brightness": 50, "color": "FEFEFE"}`)
 
 * `PUT` `/users/{{id}}`
@@ -24,8 +24,8 @@ Der Webserver reagiert auf folgende Operationen:
   (z.B. `{"brightness": 128, "color": "FFFFFF"}`)
 
 * `GET` `/status`
-  Liefert aktuellen Helligkeits- und Farbwert der Hue zurück.
-  (Entspricht `SELECT ?sva-hue:hasColor ?sva-hue:hasBrightness ?sva-hue:isOn`)
+  Liefert aktuellen Helligkeits- und Farbwert sowie Status der Hue zurück.
+  (Entspricht `SELECT ?color ?brightness ?isOn WHERE {?x sva:hasColor ?color. ?x sva:hasBrightness ?brightness. ?x sva:isOn ?isOn. }`)
   (z.B. `{"isOn": true, "brightness": 36, "color": "555555"}`)
 
 * `PUT` `/status`

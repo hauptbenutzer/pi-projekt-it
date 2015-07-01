@@ -24,5 +24,8 @@ module CoapServer
     config.active_record.raise_in_transactional_callbacks = true
 
     config.coap.multicast = false
+    config.coap.block = false
+
+    config.web_console.whitelisted_ips = '141.83.96.27'
   end
 end

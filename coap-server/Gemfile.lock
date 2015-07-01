@@ -159,6 +159,7 @@ PLATFORMS
 
 DEPENDENCIES
   byebug
+  coap
   coffee-rails (~> 4.1.0)
   david
   jbuilder (~> 2.0)

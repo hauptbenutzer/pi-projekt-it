@@ -45,4 +45,4 @@ group :development, :test do
 end
 
 gem 'david'
-
+gem 'coap'

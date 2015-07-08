@@ -27,6 +27,5 @@ module CoapServer
     config.coap.block = false
     config.default_format = "n3/turtle"
 
-    config.web_console.whitelisted_ips = '141.83.96.27'
   end
 end

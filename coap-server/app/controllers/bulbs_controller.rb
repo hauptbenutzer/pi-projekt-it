@@ -1,6 +1,6 @@
 class BulbsController < ApplicationController
   discoverable \
-    default: { ct: :turtle }
+    default: { obs: :true }
 
 
   def index
@@ -8,7 +8,7 @@ class BulbsController < ApplicationController
   end
 
   def show
-    render text: "<http://itm.uni-luebeck.de/time1> <http://itm.uni-luebeck.de/minutes> 21"
+    render text: "<http://itm.uni-luebeck.de/time1> <http://itm.uni-luebeck.de/minutes> 21", content_type: "n3/turtle"
   end
 
 end

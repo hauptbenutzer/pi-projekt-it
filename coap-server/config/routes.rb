@@ -55,5 +55,5 @@ Rails.application.routes.draw do
   #   end
 
   get 'index' => 'bulbs#index'
-  get 'show' => 'bulbs#show'
+  root 'bulbs#show'
 end

@@ -45,4 +45,4 @@ group :development, :test do
 end
 
 gem 'david'
-gem 'coap'
+gem 'coap', github: 'miradorn/coap'

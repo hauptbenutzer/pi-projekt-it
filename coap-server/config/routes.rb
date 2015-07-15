@@ -54,6 +54,9 @@ Rails.application.routes.draw do
   #     resources :products
   #   end
 
-  get 'index' => 'bulbs#index'
-  root 'bulbs#show'
+  get 'isOn' => 'bulbs#on'
+  get 'hasColor' => 'bulbs#color'
+  get 'hasBrightness' => 'bulbs#brightness'
+
+
 end

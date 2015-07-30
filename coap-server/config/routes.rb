@@ -55,10 +55,7 @@ Rails.application.routes.draw do
   #   end
 
 
-  root 'bulbs#root'
-  get 'isOn' => 'bulbs#on'
-  get 'hasColor' => 'bulbs#color'
-  get 'hasBrightness' => 'bulbs#brightness'
+  root 'bulbs#get'
 
   post 'update' => 'bulbs#update'
 

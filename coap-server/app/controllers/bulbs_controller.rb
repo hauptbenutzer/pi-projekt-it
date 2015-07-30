@@ -3,29 +3,19 @@ class BulbsController < ApplicationController
 
   before_action :set_bulb
   discoverable \
-    color: { obs: :true },
-    brightness: {obs: :true},
-    on: {obs: :true}
+    get: { obs: :true }
 
   GRP_PREFIX = "http://grp08.pit.itm.uni-luebeck.de/"
   PREFIX = "http://pit.itm.uni-luebeck.de/"
 
- def root
-   render text: "<http://grp08.pit.itm.uni-luebeck.de/bulb>
-   <http://pit.itm.uni-luebeck.de/hasSensor> <http://grp08.pit.itm.uni-luebeck.de/bulb>"
- end
 
 
-  def on
-    render text: get_value_triple("isOn", @bulb.on), content_type: "n3/turtle"
-  end
-
-  def color
-    render text: get_value_triple("hasColors", @bulb.color), content_type: "n3/turtle"
-  end
-
-  def brightness
-    render text: get_value_triple("hasBrightness", @bulb.brightness), content_type: "n3/turtle"
+  def get
+    response = [
+      get_value_triple("isOn", @bulb.on), 
+      get_value_triple("hasColors", @bulb.color),
+      get_value_triple("hasBrightness", @bulb.brightness)].join(". ")
+    render text: response, content_type: "n3/turtle"
   end
 
   def update

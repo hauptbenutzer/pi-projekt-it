@@ -25,6 +25,11 @@ class BulbsController < ApplicationController
   end
 
   def get_value_triple(s, o)
-    "<#{GRP_PREFIX+s}> <#{PREFIX}hasValue> #{o}"
+    if o.starts_with("#")
+      obj = "\"#{o}\"^^<http://www.w3.org/2001/XMLSchema#string>"
+    else
+      obj = o
+    end
+    "<#{GRP_PREFIX+s}> <#{PREFIX}hasValue> #{obj}"
   end
 end

@@ -25,7 +25,7 @@ class BulbsController < ApplicationController
   end
 
   def get_value_triple(s, o)
-    if o.starts_with("#")
+    if o.kind_of? string
       obj = "\"#{o}\"^^<http://www.w3.org/2001/XMLSchema#string>"
     else
       obj = o

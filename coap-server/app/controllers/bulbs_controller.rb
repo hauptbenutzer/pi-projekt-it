@@ -30,13 +30,17 @@ class BulbsController < ApplicationController
   def update
     respond_to do |format|
       @bulb.update(bulb_params)
+
+      bulb = Huey::Bulb.find(1)
+      bulb.update(bri: @bulb.brightness, rgb: @bulb.rgb, on: @bulb.on)
+
       format.json { render json: @bulb }
     end
   end
 
   def connect
     Huey::Request.register
-    render text: 'done'
+    render text: 'connected succesfully'
   end
 
   private

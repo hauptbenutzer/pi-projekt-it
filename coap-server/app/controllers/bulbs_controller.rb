@@ -1,7 +1,8 @@
 class BulbsController < ApplicationController
   protect_from_forgery with: :null_session
 
-  before_action :set_bulb
+  before_action :set_bulb, only: [:get, :update]
+
   discoverable \
     get: { obs: :true }
 
@@ -11,11 +12,19 @@ class BulbsController < ApplicationController
 
 
   def get
-    response = [
-      get_value_triple("isOn", @bulb.on), 
-      get_value_triple("hasColors", @bulb.color),
-      get_value_triple("hasBrightness", @bulb.brightness)].join(". ")
-    render text: response, content_type: "n3/turtle"
+    respond_to do |format|
+      format.json {
+
+      }
+      format.turtle {
+        response = [
+          get_value_triple("isOn", @bulb.on),
+          get_value_triple("hasColor", @bulb.color),
+          get_value_triple("hasBrightness", @bulb.brightness)].join(". ")
+        render text: response, content_type: "n3/turtle"
+      }
+    end
+
   end
 
   def update
@@ -23,7 +32,11 @@ class BulbsController < ApplicationController
       @bulb.update(bulb_params)
       format.json { render json: @bulb }
     end
-    @bulb.update(bulb_params)
+  end
+
+  def connect
+    Huey::Request.register
+    render text: 'done'
   end
 
   private

@@ -46,3 +46,4 @@ end
 
 gem 'david'
 gem 'coap', github: 'miradorn/coap'
+gem 'huey'

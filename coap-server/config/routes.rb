@@ -59,5 +59,7 @@ Rails.application.routes.draw do
 
   post 'update' => 'bulbs#update'
 
+  get 'connect' => 'bulbs#connect'
+
 
 end

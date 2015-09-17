@@ -32,7 +32,7 @@ class BulbsController < ApplicationController
       @bulb.update(bulb_params)
 
       bulb = Huey::Bulb.find(1)
-      bulb.update(bri: @bulb.brightness, rgb: @bulb.rgb, on: @bulb.on)
+      bulb.update(bri: @bulb.brightness, rgb: @bulb.color, on: @bulb.on)
 
       format.json { render json: @bulb }
     end

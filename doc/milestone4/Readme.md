@@ -1,7 +1,6 @@
 # Aufsetzen des Observes
 
-* Addresse der Huey Bridge muss in der Model Klasse bulb.rb in der KOnstanten `IP_ADDRESS` eingetragen sein
-* bundle install (installiert fork vom coap gem, dass den content type n3/turtle implementiert)
+* Addresse der Huey Bridge muss in der Model Klasse bulb.rb in der Konstanten `IP_ADDRESS` eingetragen sein
 * COAP server starten mit `bundle exec rails server -p 5683 -b 0.0.0.0 --pid tmp/pids/coap.id`
 * Http server starten mit `bundle exec rails server webrick -b 0.0.0.0`
 * Rails App mit Bridge verbinden indem zuerst der Knopf auf der Bridge gedrückt und anschließend ein `get` auf `$r-pi-ip:300/connect` gemacht wird

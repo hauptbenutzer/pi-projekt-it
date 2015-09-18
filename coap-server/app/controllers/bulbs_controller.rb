@@ -10,7 +10,6 @@ class BulbsController < ApplicationController
   PREFIX = "http://pit.itm.uni-luebeck.de/"
 
 
-
   def get
     respond_to do |format|
       format.json {
@@ -18,9 +17,9 @@ class BulbsController < ApplicationController
       }
       format.turtle {
         response = [
-          get_value_triple("isOn", @bulb.on),
-          get_value_triple("hasColor", @bulb.color),
-          get_value_triple("hasBrightness", @bulb.brightness)].join(". ")
+            get_value_triple("isOn", @bulb.on),
+            get_value_triple("hasColor", @bulb.color),
+            get_value_triple("hasBrightness", @bulb.brightness)].join(". ")
         render text: response, content_type: "n3/turtle"
       }
     end
@@ -29,12 +28,14 @@ class BulbsController < ApplicationController
 
   def update
     respond_to do |format|
-      @bulb.update(bulb_params)
+      format.json {
+        @bulb.update(bulb_params)
 
-      bulb = Huey::Bulb.find(1)
-      bulb.update(bri: @bulb.brightness, rgb: @bulb.color, on: @bulb.on)
+        bulb = Huey::Bulb.find(1)
+        bulb.update(bri: @bulb.brightness, rgb: @bulb.color, on: @bulb.on)
 
-      format.json { render json: @bulb }
+        render json: @bulb
+      }
     end
   end
 

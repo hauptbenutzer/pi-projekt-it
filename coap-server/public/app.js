@@ -10,6 +10,10 @@ angular.extend(minicolorsProvider.defaults, {
 
 App.controller('TypeCtrl', function($scope, Restangular, $timeout) {
 
+	Restangular.setBaseUrl('/')
+		.setRequestSuffix('.json');
+
+
 	$scope.color = {
 	  hue: '#00AA00',
 	  brightness: '#FFFFFF',
@@ -30,6 +34,11 @@ App.controller('TypeCtrl', function($scope, Restangular, $timeout) {
 	  dynamic: '#CCCCCC'
 	  // formvalidation: '#EEEEAA'
 	};
+
+	Restangular.oneUrl('/bulb','').get().then(function(rsp) {
+		$scope.bulbStatus = rsp;
+	});
+
 	$scope.isOn = true;
 	$scope.sliderValue = 3;
 	//Objects for control types:
@@ -95,13 +104,14 @@ App.controller('TypeCtrl', function($scope, Restangular, $timeout) {
 	};
 	var changePromise;
 
-	$scope.$watch('color.inline', function() {
+	$scope.$watchGroup(['bulbStatus.color', 'bulbStatus.brightness', 'bulbStatus.on'], function() {
 		if(changePromise) {
 			$timeout.cancel(changePromise);
 		}
 		changePromise = $timeout(1000);
 		changePromise.then(function() {
-			console.log("now")
+			console.log($scope.bulbStatus);
+			$scope.bulbStatus.put();
 		})
 	});
 

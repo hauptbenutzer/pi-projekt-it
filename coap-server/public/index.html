@@ -15,10 +15,10 @@
     <link href="bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom styles for this template -->
-    <link href="css/dashboard.css" rel="stylesheet">
     <link href="bower_components/jquery-minicolors/jquery.minicolors.css" rel="stylesheet">
     <link rel="stylesheet" href="bower_components/seiyria-bootstrap-slider/dist/css/bootstrap-slider.css">
     <link rel="stylesheet" href="bower_components/bootstrap-switch/dist/css/bootstrap3/bootstrap-switch.css">
+    <link href="css/dashboard.css" rel="stylesheet">
 
     <script src="bower_components/jquery/dist/jquery.js"></script>
     <script src="bower_components/angularjs/angular.min.js"></script>
@@ -81,17 +81,17 @@
                 id="inline"
                 class="form-control"
                 type="text"
-                ng-model="color.inline">
+                ng-model="bulbStatus.color">
           </div>
           <div class="col-md-6">
             <h2>Brightenss</h2>
-            <slider ng-model="sliderValue" min="0" step="1" max="255" value="sliderValue"></slider>
+            <slider ng-model="bulbStatus.brightness" min="0" step="1" max="255" value="sliderValue"></slider>
           </div>
           <div class="col-md-6">
             <h2>Status</h2>
             <input
               bs-switch
-              ng-model="isOn"
+              ng-model="bulbStatus.on"
               type="checkbox">
           </div>
 

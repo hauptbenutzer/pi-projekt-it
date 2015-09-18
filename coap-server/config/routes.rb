@@ -55,11 +55,10 @@ Rails.application.routes.draw do
   #   end
 
 
-  root 'bulbs#get'
+  get 'bulb' => 'bulbs#get'
 
-  post 'update' => 'bulbs#update'
+  put 'bulb/:id' => 'bulbs#update'
 
   get 'connect' => 'bulbs#connect'
-
 
 end

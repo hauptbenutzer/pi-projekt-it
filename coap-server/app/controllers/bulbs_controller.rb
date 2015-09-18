@@ -31,10 +31,11 @@ class BulbsController < ApplicationController
       format.json {
         @bulb.update(bulb_params)
 
-        bulb = Huey::Bulb.find(1)
-        unless bulb.nil?
-          bulb.update(bri: @bulb.brightness, rgb: @bulb.color, on: @bulb.on)
+        huey_bulb = Huey::Bulb.find(1)
+        unless huey_bulb.nil?
+          huey_bulb.update(bri: @bulb.brightness, rgb: @bulb.color, on: @bulb.on)
         end
+
         render json: @bulb
       }
     end

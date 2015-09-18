@@ -8,5 +8,5 @@ dependency-reduced-pom.xml
 buildNumber.properties
 
 coap-server/vendor
-
+coap-server/db/*.sqlite3
 coap

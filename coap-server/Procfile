@@ -1,0 +1,2 @@
+coap:       bundle exec rails server -p 5683 -b 0.0.0.0 --pid tmp/pids/coap.id
+http:       bundle exec rails server webrick -b 0.0.0.0

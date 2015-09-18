@@ -1,0 +1,25 @@
+{
+  "name": "PIT Philips Hue",
+  "version": "0.1.0",
+  "homepage": "https://github.com/hauptbenutzer/pi-projekt-it",
+  "authors": [
+    "Moritz Flucht <m.flucht@gmail.com>"
+  ],
+  "main": "index.html",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "~3.3.5",
+    "angular-minicolors": "~0.0.5",
+    "jquery-minicolors": "~2.1.12",
+    "angular-bootstrap-slider": "~0.1.17",
+    "angular-bootstrap-switch": "~0.4.1",
+    "restangular": "~1.5.1"
+  }
+}

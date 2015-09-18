@@ -13,7 +13,7 @@ class BulbsController < ApplicationController
   def get
     respond_to do |format|
       format.json {
-
+        render json: @bulb
       }
       format.turtle {
         response = [
@@ -32,8 +32,9 @@ class BulbsController < ApplicationController
         @bulb.update(bulb_params)
 
         bulb = Huey::Bulb.find(1)
-        bulb.update(bri: @bulb.brightness, rgb: @bulb.color, on: @bulb.on)
-
+        unless bulb.nil?
+          bulb.update(bri: @bulb.brightness, rgb: @bulb.color, on: @bulb.on)
+        end
         render json: @bulb
       }
     end
@@ -41,7 +42,7 @@ class BulbsController < ApplicationController
 
   def connect
     Huey::Request.register
-    render text: 'connected succesfully'
+    render text: 'connected successfully'
   end
 
   private
@@ -51,7 +52,7 @@ class BulbsController < ApplicationController
   end
 
   def bulb_params
-    params.require(:bulb).permit(:color, :on, :brightness)
+    params.require(:bulb).permit(:color, :on, :brightness, :id, :created_at, :updated_at)
   end
 
   def get_value_triple(s, o)

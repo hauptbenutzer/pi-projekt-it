@@ -24,5 +24,8 @@ module CoapServer
     config.active_record.raise_in_transactional_callbacks = true
 
     config.coap.multicast = false
+    config.coap.block = false
+    config.default_format = "n3/turtle"
+
   end
 end

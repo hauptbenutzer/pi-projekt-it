@@ -117,10 +117,16 @@ App.controller('TypeCtrl', function($scope, Restangular, $timeout) {
 		})
 	});
 	$scope.isLoading = false;
+
 	$scope.connect = function() {
 		$scope.isLoading = true;
 		Restangular.oneUrl('/connect','').get().then(function(rsp) {
 			$scope.isConnected = rsp.status;
+		});
+	}
+
+	$scope.observe = function() {
+		Restangular.oneUrl('/observe','').get().then(function(rsp) {
 		});
 	}
 

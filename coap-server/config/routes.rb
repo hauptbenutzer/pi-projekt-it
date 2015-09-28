@@ -61,4 +61,6 @@ Rails.application.routes.draw do
 
   get 'connect' => 'bulbs#connect'
 
+  get 'observe' => 'bulbs#trigger_observe'
+
 end

@@ -10,3 +10,4 @@ buildNumber.properties
 coap-server/vendor
 coap-server/db/*.sqlite3
 coap
+coap-server/public/bower_components

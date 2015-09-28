@@ -41,7 +41,7 @@
     <![endif]-->
   </head>
 
-  <body ng-app="pi-bulb">
+  <body ng-controller="TypeCtrl" ng-app="pi-bulb">
 
     <nav class="navbar navbar-inverse navbar-fixed-top">
       <div class="container-fluid">
@@ -58,14 +58,14 @@
           <ul class="nav navbar-nav navbar-right">
             <li><a href="#">Dashboard</a></li>
             <li><a href="#">Settings</a></li>
-            <li><a href="#">Profile</a></li>
+            <li><a ng-click="observe()" href="#">Observe</a></li>
             <li><a href="#">Help</a></li>
           </ul>
         </div>
       </div>
     </nav>
 
-    <div class="container-fluid" ng-controller="TypeCtrl" >
+    <div class="container-fluid"  >
       <div class="row">
         <div class="col-sm-3 col-md-2 sidebar">
           <ul class="nav nav-sidebar">

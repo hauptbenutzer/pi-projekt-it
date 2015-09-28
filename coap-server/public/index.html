@@ -21,14 +21,14 @@
     <link href="css/dashboard.css" rel="stylesheet">
 
     <script src="bower_components/jquery/dist/jquery.js"></script>
-    <script src="bower_components/angularjs/angular.min.js"></script>
+    <script src="bower_components/angular/angular.min.js"></script>
     <script src="bower_components/jquery-minicolors/jquery.minicolors.min.js"></script>
     <script src="bower_components/angular-minicolors/angular-minicolors.js"></script>
     <script src="bower_components/seiyria-bootstrap-slider/dist/bootstrap-slider.min.js"></script>
     <script src="bower_components/angular-bootstrap-slider/slider.js"></script>
     <script src="bower_components/bootstrap-switch/dist/js/bootstrap-switch.js"></script>
     <script src="bower_components/angular-bootstrap-switch/dist/angular-bootstrap-switch.min.js"></script>
-    <script src="bower_components/lodash/dist/lodash.underscore.js"></script>
+    <script src="bower_components/lodash/lodash.min.js"></script>
     <script src="bower_components/restangular/dist/restangular.min.js"></script>
 
 
@@ -65,7 +65,7 @@
       </div>
     </nav>
 
-    <div class="container-fluid">
+    <div class="container-fluid" ng-controller="TypeCtrl" >
       <div class="row">
         <div class="col-sm-3 col-md-2 sidebar">
           <ul class="nav nav-sidebar">
@@ -73,7 +73,15 @@
             <li><a href="#">User Settings</a></li>
           </ul>
         </div>
-        <div ng-controller="TypeCtrl" class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+
+        <div ng-if="!isConnected" class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+          <h2>No Bulb found</h2>
+          <p><button ng-disabled="isLoading" ng-click="connect()" class="btn-lg btn-primary">Connect now
+            <span ng-show="isLoading">Loading..</span>
+          </button></p>
+        </div>
+
+        <div ng-if="isConnected" class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
           <h2>Color</h2>
           <div class="form-group">
             <input

@@ -21,5 +21,8 @@
     "angular-bootstrap-slider": "~0.1.17",
     "angular-bootstrap-switch": "~0.4.1",
     "restangular": "~1.5.1"
+  },
+  "resolutions": {
+    "jquery-minicolors": "~2.1.12"
   }
 }

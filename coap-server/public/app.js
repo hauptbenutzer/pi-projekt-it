@@ -39,6 +39,8 @@ App.controller('TypeCtrl', function($scope, Restangular, $timeout) {
 		$scope.bulbStatus = rsp;
 	});
 
+	$scope.isConnected = false;
+
 	$scope.isOn = true;
 	$scope.sliderValue = 3;
 	//Objects for control types:
@@ -114,6 +116,13 @@ App.controller('TypeCtrl', function($scope, Restangular, $timeout) {
 			$scope.bulbStatus.put();
 		})
 	});
+	$scope.isLoading = false;
+	$scope.connect = function() {
+		$scope.isLoading = true;
+		Restangular.oneUrl('/connect','').get().then(function(rsp) {
+			$scope.isConnected = rsp.status;
+		});
+	}
 
 	var getRandomColor = function () {
 	  var letters = '0123456789ABCDEF'.split('');

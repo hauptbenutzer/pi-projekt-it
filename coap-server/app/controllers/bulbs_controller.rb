@@ -42,22 +42,31 @@ class BulbsController < ApplicationController
   end
 
   def connect
-    begin
-      Huey::Request.register
-      render json: {status: true}
-    rescue
-      render json: {status: false}
+    respond_to do |format|
+      format.json {
+        begin
+          Huey::Request.register
+          render json: { status: true }
+        rescue
+          render json: { status: false }
+        end
+      }
     end
   end
 
   def trigger_observe
-    begin
-      CoAP::Client.new.post_by_uri('coap://141.83.151.196:5683/registry')
-      render json:  {status: 'Done'}
-    rescue
-      render json:  {status: 'Done'}
+    respond_to do |format|
+      format.json {
+        begin
+          CoAP::Client.new.post_by_uri('coap://141.83.151.196:5683/registry')
+          render json: { status: 'Done' }
+        rescue
+          render json: { status: 'Done' }
+        end 
+      }
     end
   end
+
   private
 
   def set_bulb

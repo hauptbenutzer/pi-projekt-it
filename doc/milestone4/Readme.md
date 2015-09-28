@@ -6,7 +6,7 @@
 # Server starten
 
 * Addresse der Huey Bridge muss in der Model Klasse bulb.rb in der Konstanten `IP_ADDRESS` eingetragen sein
-* Server starten mit `sudo foreman start`
+* Server starten mit `sudo bundle exec foreman start`
 * Rails App mit Bridge verbinden:
 	* Zuerst der Knopf auf der Bridge drücken
 	* anschließend im Webinterface auf connect drücken

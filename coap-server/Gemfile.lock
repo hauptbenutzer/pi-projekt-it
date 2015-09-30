@@ -8,7 +8,7 @@ GIT
 
 GIT
   remote: git://github.com/miradorn/david.git
-  revision: d0a8460bc05fd16d4bb704c989b80d40c44d876d
+  revision: c73ae82433c1954b5c0d4788c71e0254a7ee2875
   specs:
     david (0.4.6.pre)
       celluloid (>= 0.16.0, < 0.17)

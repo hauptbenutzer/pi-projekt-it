@@ -28,6 +28,7 @@ class BulbsController < ApplicationController
 
   def update
     respond_to do |format|
+      format.turtle { render text: "", content_type: "n3/turtle"}
       format.json {
         @bulb.update(bulb_params)
 
@@ -43,6 +44,7 @@ class BulbsController < ApplicationController
 
   def connect
     respond_to do |format|
+      format.turtle { render text: "", content_type: "n3/turtle"}
       format.json {
         begin
           Huey::Request.register
@@ -56,13 +58,14 @@ class BulbsController < ApplicationController
 
   def trigger_observe
     respond_to do |format|
+      format.turtle { render text: "", content_type: "n3/turtle"}
       format.json {
         begin
           CoAP::Client.new.post_by_uri('coap://141.83.151.196:5683/registry')
           render json: { status: 'Done' }
         rescue
           render json: { status: 'Done' }
-        end 
+        end
       }
     end
   end

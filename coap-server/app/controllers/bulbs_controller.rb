@@ -28,13 +28,20 @@ class BulbsController < ApplicationController
 
   def update
     respond_to do |format|
-      format.turtle { render text: "", content_type: "n3/turtle"}
+      format.turtle { render text: "", content_type: "n3/turtle" }
       format.json {
+        rgb_updated = (@bulb.brightness == params[:brightness])
         @bulb.update(bulb_params)
 
         huey_bulb = Huey::Bulb.find(1)
         unless huey_bulb.nil?
-          huey_bulb.update(bri: @bulb.brightness, rgb: @bulb.color, on: @bulb.on)
+          if rgb_updated
+            huey_bulb.update(rgb: @bulb.color, on: @bulb.on)
+          else
+            huey_bulb.update(bri: @bulb.brightness, on: @bulb.on)
+          end
+
+
         end
 
         render json: @bulb
@@ -44,7 +51,7 @@ class BulbsController < ApplicationController
 
   def connect
     respond_to do |format|
-      format.turtle { render text: "", content_type: "n3/turtle"}
+      format.turtle { render text: "", content_type: "n3/turtle" }
       format.json {
         begin
           Huey::Request.register
@@ -58,7 +65,7 @@ class BulbsController < ApplicationController
 
   def trigger_observe
     respond_to do |format|
-      format.turtle { render text: "", content_type: "n3/turtle"}
+      format.turtle { render text: "", content_type: "n3/turtle" }
       format.json {
         begin
           CoAP::Client.new.post_by_uri('coap://141.83.151.196:5683/registry')

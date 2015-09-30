@@ -1,0 +1,20 @@
+@prefix pit: <http://pit.itm.uni-luebeck.de/>
+@base <http://pit.itm.uni-luebeck.de/aktor/SVA_08-SS15/>
+
+<#pi>
+	a pit:Device;
+	pit:hasGroup "SVA_08-SS15";
+	pit:hasIP "141.83.175.249";
+	pit:hasLabel "Philips Hue Bulb";
+	pit:hasSensor <#bulb> .
+	pit:hasActor <#bulb> .
+
+<#bulb>
+	a pit:Sensor;
+	a pit:Actor;
+	pit:hasDescription "Philips Hue Bulb";
+	pit:hasStatus <#isOn> ;
+	pit:hasStatus <#hasBrightness> ;
+	pit:hasStatus <#hasColor> ;
+	pit:hasInterface <http://141.83.175.249/>;
+	pit:hasDoku <https://github.com/hauptbenutzer/pi-projekt-it/blob/master/doc/milestone3/Webserver.md> .

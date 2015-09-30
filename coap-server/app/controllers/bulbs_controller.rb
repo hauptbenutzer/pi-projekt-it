@@ -37,9 +37,7 @@ END
         render json: @bulb
       }
       format.turtle {
-        response = [
-
-
+        response = META + [
             get_value_triple("isOn", @bulb.on),
             get_value_triple("hasColor", @bulb.color),
             get_value_triple("hasBrightness", @bulb.brightness)].join(". ")

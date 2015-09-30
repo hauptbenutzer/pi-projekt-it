@@ -6,9 +6,30 @@ class BulbsController < ApplicationController
   discoverable \
     get: { obs: :true }
 
-  GRP_PREFIX = "http://grp08.pit.itm.uni-luebeck.de/"
+  GRP_PREFIX = "http://pit.itm.uni-luebeck.de/aktor/SVA_08-SS15#"
   PREFIX = "http://pit.itm.uni-luebeck.de/"
+  META = <<END
+@prefix pit: <http://pit.itm.uni-luebeck.de/>
+@base <http://pit.itm.uni-luebeck.de/aktor/SVA_08-SS15>
 
+<#pi>
+  a pit:Device;
+  pit:hasGroup "SVA_08-SS15";
+  pit:hasIP "141.83.175.249";
+  pit:hasLabel "Philips Hue Bulb";
+  pit:hasSensor <#bulb> .
+  pit:hasActor <#bulb> .
+
+<#bulb>
+  a pit:Sensor;
+  a pit:Actor;
+  pit:hasDescription "Philips Hue Bulb";
+  pit:hasStatus <#isOn> ;
+  pit:hasStatus <#hasBrightness> ;
+  pit:hasStatus <#hasColor> ;
+  pit:hasInterface <http://141.83.175.249/>;
+  pit:hasDoku <https://github.com/hauptbenutzer/pi-projekt-it/blob/master/doc/milestone4/Webserver.md> .
+END
 
   def get
     respond_to do |format|
@@ -17,6 +38,8 @@ class BulbsController < ApplicationController
       }
       format.turtle {
         response = [
+
+
             get_value_triple("isOn", @bulb.on),
             get_value_triple("hasColor", @bulb.color),
             get_value_triple("hasBrightness", @bulb.brightness)].join(". ")
